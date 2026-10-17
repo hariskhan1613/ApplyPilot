@@ -7,7 +7,7 @@ function cookieOptions(isProduction) {
   return [
     'HttpOnly',
     'Path=/',
-    'SameSite=Lax',
+    isProduction ? 'SameSite=None' : 'SameSite=Lax',
     `Max-Age=${Math.floor(ONE_WEEK_MS / 1000)}`,
     ...(isProduction ? ['Secure'] : []),
   ].join('; ')
@@ -31,7 +31,8 @@ export async function login(req, res) {
 
 export function logout(req, res) {
   const secure = process.env.NODE_ENV === 'production' ? '; Secure' : ''
-  res.setHeader('Set-Cookie', `${COOKIE_NAME}=; HttpOnly; Path=/; SameSite=Lax; Max-Age=0${secure}`)
+  const sameSite = process.env.NODE_ENV === 'production' ? 'None' : 'Lax'
+  res.setHeader('Set-Cookie', `${COOKIE_NAME}=; HttpOnly; Path=/; SameSite=${sameSite}; Max-Age=0${secure}`)
   res.status(204).send()
 }
 

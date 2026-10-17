@@ -258,12 +258,12 @@ PATCH /api/interview/sessions/:id
 
 - Passwords are hashed with bcrypt.
 - Authentication uses an HttpOnly `applypilot_session` cookie containing a signed JWT.
-- Production cookies use `Secure` and `SameSite=Lax`.
+- Production cookies use `Secure` and `SameSite=None` so the separately hosted Vercel client can send them to the Render API.
 - Protected database queries include the authenticated owner ID.
 - Helmet, CORS, JSON limits, upload validation, rate limiting, and safe API errors are configured.
 - Secrets, passwords, tokens, resume text, and API keys are not logged or committed.
 
-Before a public cross-site deployment, review the cookie/CORS arrangement and add a dedicated CSRF token layer if the deployment topology requires it.
+Because the production frontend and API are hosted on different sites, add a dedicated CSRF token layer before accepting untrusted cross-site deployments or expanding the cookie policy.
 
 ## Verification status
 
