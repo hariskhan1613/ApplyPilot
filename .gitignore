@@ -32,3 +32,13 @@ tmp/
 Thumbs.db
 .vscode/*
 !.vscode/extensions.json
+
+# Local project planning/specification documents
+ARCHITECTURE.md
+FEATURES.md
+FILE_GUIDE.md
+MASTER_PROMPT.md
+STEPS.md
+TECH_STACK.md
+UI_UX.md
+specs.md
