@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Build output
+dist/
+client/dist/
+server/dist/
+build/
+
+# Secrets/local env
+.env
+.env.*
+!.env.example
+client/.env
+server/.env
+client/.env.local
+server/.env.local
+
+# Logs/runtime/temp uploads
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+uploads/tmp/
+tmp/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
